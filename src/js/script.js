@@ -1,11 +1,11 @@
 import axios from 'axios';
-import simpleLightbox from 'simplelightbox';
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { BASE_URL, options } from './pixabay-api';
+import { BASE_URL, options } from './pixabay-api.js';
 
 const galleryEl = document.querySelector('.gallery');
-const searchInputEl = document.querySelector('input[name = "searchQuery"');
+const searchInputEl = document.querySelector('input[name="searchQuery"');
 const searchFormEl = document.getElementById('search-form');
 
 const lightbox = new SimpleLightbox('.lightbox', {
@@ -20,7 +20,7 @@ function renderGallery(hits) {
   const markup = hits
     .map(
       ({
-        webFormatURL,
+        webformatURL,
         largeImageURL,
         tags,
         likes,
@@ -29,9 +29,9 @@ function renderGallery(hits) {
         downloads,
       }) => {
         return `
-        <a href="&{largeImageURL}" class=""lightbox">
+         <a href="${largeImageURL}" class="lightbox">
         <div class ="photo-card">
-        <img src="${webFormatURL}" alt="${tags}" loading="lazy"/>
+        <img src="${webformatURL}" alt="${tags}" loading="lazy"/>
         <div class="info">
         <p class="info-item">
         <b>Likes</b>
@@ -55,13 +55,13 @@ function renderGallery(hits) {
         `;
       }
     )
-    .join('');
+     .join('');
 
   galleryEl.insertAdjacentHTML('beforeend', markup);
 
-  if (options.params.page * options.params.per_page >= totalHits) {
+   if (options.params.page * options.params.per_page >= totalHits) {
     if (!reachedEnd) {
-      Notify.info("We're sorry, but you reached the end of search result");
+      Notify.info("We're sorry, but you've reached the end of search results.");
       reachedEnd = true;
     }
   }
@@ -85,7 +85,7 @@ async function handleSubmit(e) {
     const { hits } = res.data;
     console.log(hits);
 
-    if (hits.lenght === 0) {
+    if (hits.length === 0) {
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
