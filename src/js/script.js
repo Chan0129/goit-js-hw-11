@@ -8,13 +8,13 @@ const galleryEl = document.querySelector('.gallery');
 const searchInputEl = document.querySelector('input[name = "searchQuery"');
 const searchFormEl = document.getElementById('search-form');
 
-const lightbox = new simpleLightbox('.lightbox', {
+const lightbox = new SimpleLightbox('.lightbox', {
   captionsData: 'alt',
   captionDelay: 250,
 });
 
 let totalHits = 0;
-let searchEnd = false;
+let reachedEnd = false;
 
 function renderGallery(hits) {
   const markup = hits
@@ -30,15 +30,15 @@ function renderGallery(hits) {
       }) => {
         return `
         <a href="&{largeImageURL}" class=""lightbox">
-        <div class = "photo-card">
+        <div class ="photo-card">
         <img src="${webFormatURL}" alt="${tags}" loading="lazy"/>
         <div class="info">
         <p class="info-item">
         <b>Likes</b>
         ${likes}
         </p>
-        <p lcass="info-item">
-        <b>View</b>
+        <p class="info-item">
+        <b>Views</b>
         ${views}
         </p>
         <p class="info-item">
@@ -57,7 +57,7 @@ function renderGallery(hits) {
     )
     .join('');
 
-  galleryEl.insertAdjacentHTML('beforeend, markup');
+  galleryEl.insertAdjacentHTML('beforeend', markup);
 
   if (options.params.page * options.params.per_page >= totalHits) {
     if (!reachedEnd) {
@@ -70,7 +70,7 @@ function renderGallery(hits) {
 
 async function handleSubmit(e) {
   e.preventDefault();
-  options.params.q = searchInputEl.ariaValueMax.trim();
+  options.params.q = searchInputEl.value.trim();
   if (options.params.q === '') {
     return;
   }
@@ -93,7 +93,7 @@ async function handleSubmit(e) {
       Notify.success(`Yey! We found ${totalHits} images.`);
       renderGallery(hits);
     }
-    searchInputEl.vslue = '';
+    searchInputEl.value = '';
   } catch (err) {
     Notify.failure(err);
   }
@@ -111,7 +111,7 @@ async function loadMore() {
 }
 
 function handleScroll() {
-  const { scrollTop, scrollHeight } = document.documentElement;
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
   if (scrollTop + clientHeight >= scrollHeight) {
     loadMore();
   }
