@@ -1,4 +1,3 @@
-
 p,
 h1,
 h2,
@@ -10,8 +9,9 @@ h6 {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
+  background-color: #000000;
 }
 
 img {
@@ -19,6 +19,7 @@ img {
   width: 270px;
   height: 150px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .section {
@@ -32,22 +33,72 @@ img {
   margin: 0 auto;
   width: 1200px;
 }
+/* Button */
+.button {
+  padding: 5px 5px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Add color transition */
+  display: inline-flex; /* Use flexbox for layout */
+  align-items: center;
+  position: relative; /* Add relative positioning */
+}
+
+.button svg {
+  width: 13px;
+  height: 13px;
+  fill: rgb(255, 255, 255);
+}
+
+.button:hover {
+  background-color: aliceblue;
+  color: black; /* Change text color on hover */
+}
+
+.button:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.button:hover svg {
+  fill: black; /* Change SVG color on hover */
+}
 
 /* Search Field */
 .header {
   display: flex;
   justify-content: center;
+
   align-items: center;
   padding: 20px 0;
-  background-color: #1565c0;
+  background-color: #000000;
 }
 
 .search-form-input {
-  padding-left: 15px;
-  border: none;
+  padding: 5px 15px;
+  border: 1px solid white;
+  border-radius: 20px;
   outline: none;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000000;
+  margin-bottom: 2px;
 }
 
+.search-form-input:hover {
+  border: 1px solid white;
+  box-shadow: 0 0 10px rgb(231, 233, 233);
+  animation: glow 1s ease-in-out infinite alternate;
+}
 /* Gallery */
 .gallery {
   display: flex;
@@ -63,14 +114,17 @@ img {
 .photo-card {
   margin-top: 30px;
   margin-left: 30px;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  box-shadow: 0 0 5px white;
 }
-
+.photo-card:hover {
+  box-shadow: 0 0 10px white;
+}
 .info {
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  color: white;
 }
 
 .info-item {

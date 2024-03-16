@@ -90,7 +90,7 @@ async function handleSubmit(e) {
         'Sorry, there are no images matching your search query. Please try again.'
       );
     } else {
-      Notify.success(`Yey! We found ${totalHits} images.`);
+      Notify.success(`'Hooray! We found ${totalHits} images.'`);
       renderGallery(hits);
     }
     searchInputEl.value = '';
