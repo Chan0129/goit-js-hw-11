@@ -41,10 +41,10 @@ img {
   border: 1px solid white;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Add color transition */
-  display: inline-flex; /* Use flexbox for layout */
+  transition: background-color 0.3s ease, color 0.3s ease; 
+  display: inline-flex; 
   align-items: center;
-  position: relative; /* Add relative positioning */
+  position: relative; 
 }
 
 .button svg {
@@ -55,7 +55,7 @@ img {
 
 .button:hover {
   background-color: aliceblue;
-  color: black; /* Change text color on hover */
+  color: black; 
 }
 
 .button:hover::before {
@@ -70,7 +70,7 @@ img {
 }
 
 .button:hover svg {
-  fill: black; /* Change SVG color on hover */
+  fill: black; 
 }
 
 /* Search Field */
